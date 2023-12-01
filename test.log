@@ -1,0 +1,29 @@
+sbt test
+[info] welcome to sbt 1.9.7 (Ubuntu Java 11.0.21)
+[info] loading settings for project ca2023-lab3-build from plugins.sbt ...
+[info] loading project definition from /home/vboxuser/ca2023-lab3/project
+[info] loading settings for project root from build.sbt ...
+[info] set current project to mycpu (in build file:/home/vboxuser/ca2023-lab3/)
+[info] InstructionDecoderTest:
+[info] InstructionDecoder of Single Cycle CPU
+[info] - should produce correct control signal
+[info] RegisterFileTest:
+[info] Register File of Single Cycle CPU
+[info] - should read the written content
+[info] - should x0 always be zero
+[info] - should read the writing content
+[info] InstructionFetchTest:
+[info] InstructionFetch of Single Cycle CPU
+[info] - should fetch instruction
+[info] ExecuteTest:
+[info] Execution of Single Cycle CPU
+[info] - should execute correctly
+[info] shellSort:
+[info] Single Cycle CPU
+[info] - should shellSort function
+[info] Run completed in 2 minutes, 59 seconds.
+[info] Total number of tests run: 7
+[info] Suites: completed 5, aborted 0
+[info] Tests: succeeded 7, failed 0, canceled 0, ignored 0, pending 0
+[info] All tests passed.
+[success] Total time: 181 s (03:01), completed Dec 1, 2023, 8:37:39 PM
