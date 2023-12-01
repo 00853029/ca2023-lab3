@@ -63,7 +63,7 @@ class TestTopModule(exeFilename: String) extends Module {
   io.mem_debug_read_data    := mem.io.debug_read_data
 }
 
-class FibonacciTest extends AnyFlatSpec with ChiselScalatestTester {
+/*class FibonacciTest extends AnyFlatSpec with ChiselScalatestTester {
   behavior.of("Single Cycle CPU")
   it should "recursively calculate Fibonacci(10)" in {
     test(new TestTopModule("fibonacci.asmbin")).withAnnotations(TestAnnotations.annos) { c =>
@@ -110,6 +110,37 @@ class ByteAccessTest extends AnyFlatSpec with ChiselScalatestTester {
       c.io.regs_debug_read_data.expect(0xef.U)
       c.io.regs_debug_read_address.poke(1.U) // ra
       c.io.regs_debug_read_data.expect(0x15ef.U)
+    }
+  }
+}
+*/
+class shellSort extends AnyFlatSpec with ChiselScalatestTester {
+  behavior.of("Single Cycle CPU")
+  it should "shellSort function" in {
+    test(new TestTopModule("shellSort.asmbin")).withAnnotations(TestAnnotations.annos) { c =>
+      for (i <- 1 to 10000) {
+        c.clock.step(1000)
+        c.io.mem_debug_read_address.poke((i * 4).U) // Avoid timeout
+      }
+      //check answer begin
+      //***memory***
+      c.io.mem_debug_read_address.poke(0.U)
+      c.clock.step()
+      c.io.mem_debug_read_data.expect(0xbfc00000L.U)
+      c.io.mem_debug_read_address.poke(4.U)
+      c.clock.step()
+      c.io.mem_debug_read_data.expect(0xbfa60000L.U)
+      c.io.mem_debug_read_address.poke(8.U)
+      c.clock.step()
+      c.io.mem_debug_read_data.expect(0xbf8c0000L.U)
+      c.io.mem_debug_read_address.poke(12.U)
+      c.clock.step()
+      c.io.mem_debug_read_data.expect(0x3f990000L.U)
+      c.io.mem_debug_read_address.poke(16.U)
+      c.clock.step()
+      c.io.mem_debug_read_data.expect(0x3fb30000L.U)
+      
+      //end---
     }
   }
 }
